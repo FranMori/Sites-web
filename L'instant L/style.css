@@ -1,0 +1,337 @@
+/* styles.css — ultra premium beauty template */
+:root {
+    /* Palette raffinée matching le nouveau logo */
+    --gold: #d4a85c;
+    --gold-dark: #b58a47;
+    --rose-plume: #d8a097;
+    --rose-deep: #8b5f58;
+    --black-velours: #1d1c1c;
+    --anthracite: #2a2a2a;
+    --text-light: #e8e3dd;
+    --text-soft: #cfc7c2;
+    --radius: 26px;
+    --shadow-soft: 0 12px 35px rgba(0, 0, 0, 0.35);
+    --shadow-strong: 0 22px 45px rgba(0, 0, 0, 0.5);
+    --transition: 0.35s ease;
+    --gradient: linear-gradient(135deg, #1d1c1c 0%, #2a2a2a 100%);
+    --gradient-gold: linear-gradient(135deg, #d4a85c, #b58a47);
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto;
+}
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, var(--black-velours) 0%, var(--anthracite) 80%, #fdf9f6 100%);
+    color: var(--text-light);
+    animation: fadeIn 0.8s ease;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* HEADER */
+.logo {
+    height: 55px !important;
+    width: auto !important;
+    object-fit: contain;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: rgba(20, 20, 20, 0.55);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+nav {
+    display: flex;
+    gap: 35px;
+    padding: 10px 25px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(10px);
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--text-light);
+    transition: var(--transition);
+    position: relative;
+}
+
+nav a:hover {
+    color: var(--gold);
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: var(--primary);
+    transition: var(--transition);
+    border-radius: 5px;
+}
+
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 200px 20px;
+    background: linear-gradient(135deg, var(--black-velours) 0%, var(--anthracite) 100%);
+    box-shadow: none;
+    position: relative;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    border-radius: 0;
+}
+
+
+/* floating light elements (toned down, smaller, moved behind) */
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.45), transparent 70%);
+    border-radius: 50%;
+    animation: bubble 18s infinite ease-in-out;
+    z-index: 0;
+    /* goes behind everything */
+    opacity: 0.35;
+}
+
+hero::before {
+    top: -120px;
+    left: -80px;
+}
+
+.hero::after {
+    bottom: -120px;
+    right: -80px;
+    animation-delay: 4s;
+}
+
+
+@keyframes bubble {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.25);
+        opacity: 0.7;
+    }
+}
+
+
+.hero h1 {
+    font-size: 3.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+
+.hero p {
+    font-size: 1.35rem;
+    color: var(--text-light);
+    max-width: 650px;
+    margin: 0 auto 45px;
+    position: relative;
+    z-index: 2;
+}
+
+
+/* PREMIUM BUTTON */
+.btn {
+    display: inline-block;
+    padding: 18px 55px;
+    background: var(--gradient-gold);
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.25rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow-strong);
+    border: none;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 2;
+}
+
+
+.btn:hover {
+    transform: translateY(-8px) scale(1.06);
+    filter: brightness(1.1);
+}
+
+
+/* SECTIONS */
+section {
+    padding: 140px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+
+h2 {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    color: var(--text-light);
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+h2::after {
+    content: "";
+    width: 140px;
+    height: 3px;
+    background: var(--gold);
+    display: block;
+    margin: 12px auto 0;
+    border-radius: 3px;
+    opacity: 0.85;
+}
+
+/* ABOUT */
+.about p {
+    font-size: 1.25rem;
+    color: var(--text-light);
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.9;
+}
+
+
+/* PRICING IMAGE */
+.pricing {
+    text-align: center;
+    padding: 120px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.pricing-img {
+    width: 70%;
+    max-width: 650px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-strong);
+    margin: 40px auto 0;
+    display: block;
+    transition: var(--transition);
+}
+
+.pricing-img:hover {
+    transform: scale(1.03) rotate(0.2deg);
+}
+
+
+/* RDV */
+.rdv p {
+    font-size: 1.25rem;
+    color: var(--text-light);
+    max-width: 750px;
+    margin: auto auto 35px;
+}
+
+.rdv {
+    text-align: center;
+    padding: 140px 20px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.rdv .btn {
+    margin-top: 30px;
+    display: inline-block;
+}
+
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 50px;
+    background: linear-gradient(135deg, var(--anthracite), var(--black-velours));
+    color: var(--text-soft);
+    font-size: 1rem;
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.4);
+}
+
+footer .socials {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+
+footer .socials a {
+    font-size: 1.5rem;
+    color: var(--gold);
+    transition: var(--transition);
+}
+
+
+footer .socials a:hover {
+    color: var(--gold-dark);
+    transform: scale(1.15);
+}
