@@ -34,11 +34,12 @@
     box-sizing: border-box;
 }
 
+
 html,
 body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 
 body {
@@ -91,10 +92,11 @@ h3 {
 .site-header {
     position: sticky;
     top: 0;
-    z-index: 50;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(148, 163, 184, 0.24);
+    z-index: 1000;
+    background: var(--beige-bg, #faf9f6);
+    /* ta couleur actuelle */
+    backdrop-filter: blur(12px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .header-inner {
@@ -103,6 +105,7 @@ h3 {
     justify-content: space-between;
     padding: 0.9rem 0;
 }
+
 
 /* Logo */
 .logo-group {
@@ -349,9 +352,19 @@ body.nav-open {
 }
 
 .testimonial-img {
-    width: 36px;
-    opacity: 0.85;
+    width: 180px;
+    /* Taille augmentée (tu peux monter à 200–220 si tu veux) */
+    height: 180px;
+    /* Toujours carré pour garder l’harmonie */
+    object-fit: cover;
+    /* Remplissage propre */
+    border-radius: 28px;
+    /* Un peu plus arrondi que le reste pour un look premium */
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+    transform: translateY(20px);
+    /* Pour la descendre légèrement, optionnel */
 }
+
 
 .testimonial-text {
     margin: 1rem 0;
@@ -363,6 +376,7 @@ body.nav-open {
     font-size: 0.9rem;
     color: var(--text-muted);
 }
+
 
 /* ============================
    HOW IT WORKS
@@ -472,6 +486,35 @@ body.nav-open {
     gap: 0.9rem;
 }
 
+/* Container pour bien aligner les deux boutons */
+.freelancer-buttons {
+    display: flex;
+    gap: 18px;
+    /* espace entre les deux boutons */
+    margin-top: 25px;
+    flex-wrap: wrap;
+    /* permet un bon rendu en mobile */
+}
+
+/* Style identique pour View missions & Apply now */
+.btn-primary {
+    padding: 14px 32px;
+    background: var(--orange);
+    color: white;
+    border-radius: 40px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: 0.25s ease;
+    box-shadow: 0 8px 20px rgba(233, 114, 76, 0.35);
+}
+
+/* Hover identique */
+.btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 26px rgba(233, 114, 76, 0.45);
+}
+
 /* ============================
    WHY BRIDGI
 ============================ */
@@ -479,6 +522,14 @@ body.nav-open {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 2rem;
+    display: flex;
+    flex-wrap: nowrap;
+    /* Empêche la 4e de descendre */
+    gap: 32px;
+    justify-content: center;
+    /* Centre les cartes */
+    align-items: stretch;
+
 }
 
 .why-card {
@@ -487,6 +538,16 @@ body.nav-open {
     padding: 2rem 1.8rem;
     box-shadow: var(--shadow-soft);
     transition: transform var(--t-med), box-shadow var(--t-med);
+
+
+}
+
+.why-card {
+    flex: 1;
+    /* Partage équitable de l’espace */
+    max-width: 260px;
+    /* Taille limite pour tenir à 4 sur une ligne */
+    min-width: 220px;
 }
 
 .why-card:hover {
@@ -657,6 +718,221 @@ body.nav-open {
     color: #c3caea;
 }
 
+.mission-card {
+    cursor: pointer;
+}
+
+.mission-details-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+    max-width: 700px;
+    margin: auto;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #2a3b5f;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.form-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
+    max-width: 750px;
+    margin: auto;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.form-row input {
+    flex: 1;
+}
+
+.file-upload {
+    display: block;
+    margin: 20px 0;
+}
+
+/* Missions section layout */
+.missions-section {
+    max-width: 1100px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+.missions-intro {
+    color: #555;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+/* Grid layout */
+.missions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+}
+
+/* Mission cards */
+.mission-card {
+    background: #fff;
+    padding: 28px;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mission-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.mission-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+    color: #2d3559;
+}
+
+.mission-meta {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+}
+
+.mission-desc {
+    color: #444;
+    line-height: 1.45;
+    margin-bottom: 16px;
+}
+
+/* Link styling */
+.mission-link {
+    color: #e66a33;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.mission-link:hover {
+    text-decoration: underline;
+}
+
+
+/* APPLY SECTION */
+.apply-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #f8f8f4, #eef2f9);
+}
+
+.apply-container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.apply-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2d3559;
+}
+
+.apply-subtitle {
+    margin-bottom: 40px;
+    color: #555;
+}
+
+.apply-form {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+/* INPUTS */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #2d3559;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="date"],
+.form-group input[type="file"],
+#other-lang-input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-top: 8px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+/* CHECKBOXES */
+.form-block {
+    margin: 30px 0;
+}
+
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0;
+}
+
+.checkbox-row input {
+    width: 18px;
+    height: 18px;
+}
+
+.columns-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* BUTTON */
+.apply-submit {
+    background: #e9724c;
+    color: white;
+    border: none;
+    padding: 15px 28px;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.2s;
+}
+
+.apply-submit:hover {
+    background: #d65f3c;
+}
+
+
+
 /* ============================
    RESPONSIVE
 ============================ */
@@ -740,5 +1016,29 @@ body.nav-open {
 @media (max-width: 600px) {
     .calendly-inline-widget iframe {
         height: 1200px !important;
+    }
+}
+
+/* --- RESPONSIVE --- */
+
+/* Tablette : 2 cartes par ligne */
+@media (max-width: 992px) {
+    .why-card {
+        flex: 1 1 calc(50% - 32px);
+        max-width: 100%;
+    }
+}
+
+/* Mobile : 1 carte par ligne, comme How it works */
+@media (max-width: 600px) {
+    .why-grid {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .why-card {
+        flex: 1 1 100%;
+        width: 100%;
+        max-width: none;
     }
 }
