@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Senior Product Manager – Bridgi</title>
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+
+    <!-- Header (identique à index.html) -->
+
+    <main class="job-page">
+
+        <section class="job-header">
+            <h1>Senior Product Manager</h1>
+            <p class="job-meta">6–12 months · Brussels · Hybrid</p>
+        </section>
+
+        <section class="job-description">
+            <h2>Mission overview</h2>
+            <p>
+                You will lead the product roadmap for a large-scale transformation
+                initiative, working closely with stakeholders across the organization.
+            </p>
+
+            <h2>Responsibilities</h2>
+            <ul>
+                <li>Define and drive product strategy</li>
+                <li>Align stakeholders across business and tech</li>
+                <li>Lead cross-functional teams</li>
+            </ul>
+
+            <h2>Ideal profile</h2>
+            <ul>
+                <li>Senior-level experience in product management</li>
+                <li>Strong stakeholder management skills</li>
+                <li>Experience in transformation contexts</li>
+            </ul>
+        </section>
+
+        <!-- APPLY CTA -->
+        <section class="job-apply-cta">
+            <a href="#apply-form" class="btn-primary">
+                Apply for this mission
+            </a>
+
+            <p class="apply-note">
+                <em>
+                    This application is reviewed by Bridgi.
+                    Your profile is only shared with the client after a discussion
+                    and mutual agreement.
+                </em>
+            </p>
+        </section>
+
+        <!-- FORM -->
+        <section id="apply-form" class="mission-apply-form">
+            <h2>Apply for this mission</h2>
+
+            <form action="https://formspree.io/f/mdkqynvw" method="POST">
+
+                <!-- hidden mission context -->
+                <input type="hidden" name="mission" value="Senior Product Manager" />
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First name</label>
+                        <input type="text" name="first_name" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Last name</label>
+                        <input type="text" name="last_name" required />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" required />
+                </div>
+
+                <div class="form-group">
+                    <label>Availability</label>
+                    <input type="date" name="availability" />
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Why are you interested in this mission?
+                    </label>
+                    <textarea name="motivation" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Relevant experience for this role
+                    </label>
+                    <textarea name="experience" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Rate for this mission
+                    </label>
+                    <input type="text" name="rate" placeholder="e.g. €650/day" required />
+                </div>
+
+                <div class="form-group">
+                    <label>Link to your CV or LinkedIn</label>
+                    <input type="url" name="cv_link" placeholder="https://linkedin.com/in/..." required />
+                </div>
+
+                <button type="submit" class="btn-primary">
+                    Submit application
+                </button>
+
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+
+</body>
+
+</html>

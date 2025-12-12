@@ -60,7 +60,7 @@
         </section>
 
         <!-- APPLY CONTENT -->
-        <form class="apply-form">
+        <form class="apply-form" action="https://formspree.io/f/mjknjbjp" method="POST" enctype="multipart/form-data">
 
             <!-- Name fields -->
             <div class="form-row">
@@ -89,7 +89,7 @@
 
             <!-- LANGUAGES -->
             <div class="form-block">
-                <h3>Languages</h3>
+                <h4>Languages</h4>
 
                 <label class="checkbox-row">
                     <input type="checkbox" name="lang" value="French">
@@ -115,39 +115,37 @@
             </div>
 
             <!-- ROLES -->
-            <div class="form-block">
-                <h3>What kind of roles are you interested in?</h3>
+            <div class="form-group">
+                <label for="mission_preferences">
+                    What kind of missions would you like to work on, and why?
+                    <span class="label-hint">
+                        (roles, industries, environment, duration, level of responsibility)
+                    </span>
+                </label>
 
-                <div class="columns-2">
-                    <label class="checkbox-row"><input type="checkbox"> Accounting</label>
-                    <label class="checkbox-row"><input type="checkbox"> AP</label>
-                    <label class="checkbox-row"><input type="checkbox"> AR</label>
-                    <label class="checkbox-row"><input type="checkbox"> GL</label>
-                    <label class="checkbox-row"><input type="checkbox"> Controlling</label>
-                    <label class="checkbox-row"><input type="checkbox"> FP&A</label>
-                    <label class="checkbox-row"><input type="checkbox"> Reporting</label>
-                    <label class="checkbox-row"><input type="checkbox"> Consolidation</label>
-                    <label class="checkbox-row"><input type="checkbox"> Finance Manager</label>
-                    <label class="checkbox-row"><input type="checkbox"> CFO</label>
-                    <label class="checkbox-row"><input type="checkbox"> M&A</label>
-                    <label class="checkbox-row"><input type="checkbox"> Credit</label>
-                    <label class="checkbox-row"><input type="checkbox"> Cost</label>
-                    <label class="checkbox-row"><input type="checkbox"> Project Management</label>
-                    <label class="checkbox-row"><input type="checkbox"> People management</label>
-                    <label class="checkbox-row"><input type="checkbox"> Change management</label>
-                    <label class="checkbox-row"><input type="checkbox"> Process improvement</label>
-                    <label class="checkbox-row"><input type="checkbox"> IT</label>
-                    <label class="checkbox-row"><input type="checkbox"> Procurement</label>
-                    <label class="checkbox-row"><input type="checkbox"> HR</label>
-                    <label class="checkbox-row"><input type="checkbox"> ERP implementation</label>
-                </div>
+                <textarea id="mission_preferences" name="mission_preferences" rows="5"
+                    placeholder="Tell us what motivates you, what you’re looking for, and the type of missions where you feel you bring the most value."
+                    required></textarea>
+
+                <p class="form-note">
+                    * There is no “right” answer here. This helps us understand you better before reaching out.
+                </p>
             </div>
 
             <!-- CV UPLOAD -->
             <div class="form-group">
-                <label>Upload your CV (PDF)</label>
-                <input type="file" accept="application/pdf">
+                <label for="cv">Upload your CV (PDF)</label>
+
+                <div class="file-upload">
+                    <input type="file" id="cv" name="cv" accept=".pdf" required />
+                    <label for="cv" class="file-upload-btn">
+                        Upload PDF
+                    </label>
+                    <span class="file-name">No file selected</span>
+                </div>
             </div>
+            <input type="hidden" name="_subject" value="New Bridgi application">
+
 
             <button type="submit" class="apply-submit">Submit application</button>
 
@@ -190,6 +188,11 @@
         langOther.addEventListener("change", () => {
             otherInput.classList.toggle("hidden", !langOther.checked);
         });
+        document.getElementById("cv").addEventListener("change", function () {
+            const fileName = this.files.length ? this.files[0].name : "No file selected";
+            document.querySelector(".file-name").textContent = fileName;
+        });
+    </script>
     </script>
 
 </body>
