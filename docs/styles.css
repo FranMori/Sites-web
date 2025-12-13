@@ -180,25 +180,33 @@ h3 {
 ============================ */
 .burger {
     display: none;
+    /* affiché uniquement en mobile via media query */
+    width: 28px;
+    height: 22px;
     flex-direction: column;
-    gap: 4px;
-    padding: 0.35rem;
-    border-radius: var(--radius-pill);
-    border: 1px solid rgba(148, 163, 184, 0.7);
-    background: #ffffff;
+    justify-content: space-between;
+    background: transparent;
+    border: none;
+    padding: 0;
     cursor: pointer;
+    z-index: 1200;
 }
 
 .burger span {
-    width: 18px;
-    height: 2px;
-    border-radius: 999px;
-    background: var(--blue-dark);
-    transition: transform var(--t-fast), opacity var(--t-fast);
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #1f2937;
+    /* bleu Bridgi */
+    border-radius: 2px;
+
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+
 }
 
 .burger.active span:nth-child(1) {
-    transform: translateY(4px) rotate(45deg);
+    transform: translateY(9.5px) rotate(45deg);
 }
 
 .burger.active span:nth-child(2) {
@@ -206,7 +214,7 @@ h3 {
 }
 
 .burger.active span:nth-child(3) {
-    transform: translateY(-4px) rotate(-45deg);
+    transform: translateY(-9.5px) rotate(-45deg);
 }
 
 /* Mobile nav */
@@ -1232,6 +1240,35 @@ body.nav-open {
 /* ============================
    RESPONSIVE
 ============================ */
+
+/* ============================
+   HEADER – RESPONSIVE FIX
+============================ */
+
+/* Mobile */
+@media (max-width: 900px) {
+
+    /* On cache la nav desktop */
+    .main-nav {
+        display: none;
+    }
+
+    /* On affiche le burger */
+    .burger {
+        display: flex;
+    }
+
+    /* Header plus compact sur mobile */
+    .header-inner {
+        padding: 0.6rem 0;
+    }
+
+    /* Logo légèrement réduit */
+    .logo {
+        width: 90px;
+    }
+}
+
 @media (max-width: 960px) {
     .hero-grid {
         grid-template-columns: minmax(0, 1fr);
