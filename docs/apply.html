@@ -60,31 +60,31 @@
         </section>
 
         <!-- APPLY CONTENT -->
-        <form class="apply-form" action="https://formspree.io/f/mjknjbjp" method="POST" enctype="multipart/form-data">
+        <form class="apply-form" id="apply-form" enctype="multipart/form-data">
 
             <!-- Name fields -->
             <div class="form-row">
                 <div class="form-group">
                     <label>First name</label>
-                    <input type="text" placeholder="John" required>
+                    <input type="text" name="firstName" placeholder="John" required>
                 </div>
 
                 <div class="form-group">
                     <label>Last name</label>
-                    <input type="text" placeholder="Doe" required>
+                    <input type="text" name="lastName" placeholder="Doe" required>
                 </div>
             </div>
 
             <!-- Email -->
             <div class="form-group">
                 <label>Email</label>
-                <input type="email" placeholder="you@example.com" required>
+                <input type="email" name="email" placeholder="you@example.com" required>
             </div>
 
             <!-- Availability -->
             <div class="form-group">
                 <label>Availability</label>
-                <input type="date" required>
+                <input type="date" name="availability" required>
             </div>
 
             <!-- LANGUAGES -->
@@ -111,7 +111,8 @@
                     <span>Autres</span>
                 </label>
 
-                <input type="text" id="other-lang-input" placeholder="Specify language…" class="hidden">
+                <input type="text" id="other-lang-input" name="otherLanguage" placeholder="Specify language…"
+                    class="hidden">
             </div>
 
             <!-- ROLES -->
@@ -141,13 +142,15 @@
                     <label for="cv" class="file-upload-btn">
                         Upload PDF
                     </label>
-                    <span class="file-name">No file selected</span>
+                    <span id="file-name" class="file-name">No file selected</span>
                 </div>
             </div>
             <input type="hidden" name="_subject" value="New Bridgi application">
 
 
             <button type="submit" class="apply-submit">Submit application</button>
+            <p id="apply-status" class="form-status" aria-live="polite"></p>
+
 
         </form>
 
@@ -182,17 +185,64 @@
     </footer>
 
     <script>
+        const cvInput = document.getElementById("cv");
+        const fileNameSpan = document.getElementById("file-name");
+
+        cvInput.addEventListener("change", () => {
+            if (cvInput.files.length > 0) {
+                fileNameSpan.textContent = cvInput.files[0].name;
+            } else {
+                fileNameSpan.textContent = "No file selected";
+            }
+        });
+        const form = document.getElementById("apply-form");
+        const statusEl = document.getElementById("apply-status");
+
         const langOther = document.getElementById("lang-other");
         const otherInput = document.getElementById("other-lang-input");
 
         langOther.addEventListener("change", () => {
             otherInput.classList.toggle("hidden", !langOther.checked);
         });
-        document.getElementById("cv").addEventListener("change", function () {
-            const fileName = this.files.length ? this.files[0].name : "No file selected";
-            document.querySelector(".file-name").textContent = fileName;
+
+        const API_URL = "http://localhost:3000/api/apply";
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            console.log("🚀 Submit triggered");
+
+            statusEl.textContent = "Sending…";
+
+            const fd = new FormData(form);
+
+            // Collect languages
+            const languages = [...document.querySelectorAll('input[name="lang"]:checked')]
+                .map(el => el.value)
+                .join(", ");
+
+            fd.set("languages", languages);
+
+            try {
+                const res = await fetch(API_URL, {
+                    method: "POST",
+                    body: fd
+                });
+
+                const data = await res.json();
+                console.log("⬅️ Response:", data);
+
+                if (!res.ok || !data.ok) {
+                    throw new Error(data.error || "Submission failed");
+                }
+
+                statusEl.textContent = "✅ Application sent. We’ll get back to you soon.";
+                form.reset();
+
+            } catch (err) {
+                console.error(err);
+                statusEl.textContent = "❌ Error sending application.";
+            }
         });
-    </script>
     </script>
 
 </body>
